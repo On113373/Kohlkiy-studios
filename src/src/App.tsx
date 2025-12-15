@@ -1,11 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { 
-  FaPlay, FaPause, FaStop, FaRecord, FaSave, 
-  FaFolderOpen, FaWaveSquare, FaSlidersH, FaMicrophone, 
-  FaVolumeUp, FaCog, FaRocket, FaBolt, FaAtom, 
-  FaShieldAlt, FaCloud, FaBrain, FaRobot, FaStar,
+  FaPlay, FaPause, FaRecord, FaSave, 
+  FaWaveSquare, FaMicrophone, FaBolt, FaBrain, FaRobot, FaStar,
   FaFire, FaGem, FaCrown, FaMagic, FaGamepad,
-  FaDollarSign, FaChartLine, FaUsers
+  FaCloud, FaUsers
 } from 'react-icons/fa'
 
 function App() {
@@ -45,7 +43,7 @@ function App() {
     const initAudio = async () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-        const ctx = new (window.AudioContext || (window as any).webkitAudioContext)()
+        const ctx = new (globalThis.AudioContext || (globalThis as any).webkitAudioContext)()
         const source = ctx.createMediaStreamSource(stream)
         const analyser = ctx.createAnalyser()
         
